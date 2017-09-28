@@ -21,8 +21,22 @@ public class Automata {
         // TODO code application logic here
         Automat x = new Automat();
         x.print();
-        System.out.println("Dfs");
-        x.initDfs();
+        
+        int z = x.bfs(1000);
+        if(z == -1 )
+            System.out.print("All length to 1000 are reachable\n");
+        else 
+            System.out.print("Length "+z+" isn`t reachable\n");
+                
+        x.generateCycles();
+
+        if(x.fullCheck())
+            System.out.print("All length over 1000 are reachable");
+        else 
+            System.out.print("Length over 1000 arent reachable");
+        
+        
+  
     }
     
 }

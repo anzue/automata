@@ -19,11 +19,19 @@ import java.util.*;
 public class Vertex {
     private boolean isFinal;
     private HashMap<Character,ArrayList<Vertex> > ways; 
-    
-    
+    private boolean isVisited;
+    public int cycleLen;
     public Vertex(){
         isFinal = false;
         ways = new HashMap< > ();
+        isVisited = false;
+    }
+    
+    public boolean IsVisited(){
+        return isVisited;
+    }
+    public void SetVisited(boolean val){
+        isVisited = val;
     }
     public void SetFinal(boolean a){
         isFinal = a;
@@ -41,12 +49,14 @@ public class Vertex {
         ArrayList<Vertex> q = ways.get(c);
         if(q == null){
             q = new ArrayList<>();
-            ways.replace(c, q);
+            ways.put(c, q);
+            //ways.replace(c, q);
         }
         q.add(to);
         
-        System.out.println("Adding way from "+this+ " to "+ to + " by " + c);
-        System.out.println(ways.get(c).size() + " " + q.size());
+      //  System.out.println("Adding way from "+this+ " to "+ to + " by " + c);
+        
+      //  System.out.println(ways.get(c) + " " + q.size());
     }
     public void print(){
         if(isFinal)System.out.println("Final");
